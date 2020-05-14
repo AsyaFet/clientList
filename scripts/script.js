@@ -30,14 +30,6 @@ function displayData(clientsList = clients) {
 
 function sortList(order) {
   const sortedClients = clients.sort((lastClient, nextClient) => {
-    // return order == "ascending"
-    //   ? lastClient.lastName > nextClient.lastName
-    //     ? 1
-    //     : -1
-    //   : lastClient.lastName < nextClient.lastName
-    //   ? 1
-    //   : -1;
-
     if (order == "ascending") {
       return lastClient.lastName > nextClient.lastName ? 1 : -1;
     } else {
@@ -99,10 +91,10 @@ function removeCurrencyFromAmount(amount) {
 
 function showNotFoundSection() {
   document.querySelector(".resultList").style.display = "none";
-  document.querySelector(".notFound").style.display = "blocked";
+  document.querySelector(".notFound").style.display = "block";
 }
 
 function showResultListSection() {
-  document.querySelector(".resultList").style.display = "none";
-  document.querySelector(".notFound").style.display = "blocked";
+  document.querySelector(".resultList").style.display = "block";
+  document.querySelector(".notFound").style.display = "none";
 }
