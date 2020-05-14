@@ -13,7 +13,7 @@
     />
   </head>
   <body>
-    <div class="container">
+    <section class="container">
       <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand">Clients list</a>
         <form class="form-inline">
@@ -23,14 +23,15 @@
             type="Start"
             placeholder="Search"
             aria-label="Search"
+            onkeyup="filterList()"
           />
-          <button
+          <!-- <button
             class="btn btn-outline-success my-2 my-sm-0"
             type="button"
             onclick="filterList()"
           >
             Filter
-          </button>
+          </button> -->
           <div class="btn-group mx-2" role="group" aria-label="First group">
             <button
               type="button"
@@ -48,13 +49,30 @@
             </button>
           </div>
         </form>
+        <a> $<span class="totalAmountContainer">00.00</span></a>
       </nav>
+    </section>
+    <section class="container resultList">
+      
       <div class="row">
         <div class="col-12">
           <ul çlass="list-unstyled" id="clientsData"></ul>
         </div>
       </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="text-right">
+            <h3>Totl: $<span class="totalAmountContainer">00.00</span></h3>
+          </div>
+        </div>
+      </div>
+    </section class="container notFound">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="display-2">Sorry, nothing was found</h1>
+      </div>
     </div>
+    <section></section>
   </body>
   <script>
     (function () {
