@@ -63,13 +63,17 @@ function filterList() {
       return (
         client.firstName.toLowerCase().includes(filterString) ||
         client.lastName.toLowerCase().includes(filterString) ||
-        client.email.toLowerCase().includes(filterString)
+        client.email.toLowerCase().includes(filterString) ||
+        client.gender.toLowerCase().includes(filterString)
       );
     });
     refreshData(filteredClients);
-    filteredClients.lenght === 0
-      ? showNotFoundSection()
-      : showResultListSection();
+    if (filteredClients.lenght === 0) {
+      showGeneralResult();
+    }
+    // filteredClients.lenght === 0
+    //   ? showNotFoundSection()
+    //   : showResultListSection();
   } else {
     refreshData(clients);
     showResultListSection();
@@ -89,12 +93,22 @@ function removeCurrencyFromAmount(amount) {
   return Number(amount.slice(1));
 }
 
-function showNotFoundSection() {
-  document.querySelector(".resultList").style.display = "none";
-  document.querySelector(".notFound").style.display = "block";
-}
+// function showNotFoundSection() {
+//   document.querySelector(".resultList").style.display = "none";
+//   document.querySelector(".notFound").style.display = "block";
+// }
 
-function showResultListSection() {
-  document.querySelector(".resultList").style.display = "block";
-  document.querySelector(".notFound").style.display = "none";
+// function showResultListSection() {
+//   document.querySelector(".resultList").style.display = "block";
+//   document.querySelector(".notFound").style.display = "none";
+// }
+
+function showGeneralResult() {
+  if (filteredClients.lenght === 0) {
+    document.querySelector(".resultList").style.display = "none";
+    document.querySelector(".notFound").style.display = "block";
+  } else {
+    document.querySelector(".resultList").style.display = "block";
+    document.querySelector(".notFound").style.display = "none";
+  }
 }
