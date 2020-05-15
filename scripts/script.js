@@ -63,12 +63,11 @@ function filterList() {
       return (
         client.firstName.toLowerCase().includes(filterString) ||
         client.lastName.toLowerCase().includes(filterString) ||
-        client.email.toLowerCase().includes(filterString) ||
-        client.gender.toLowerCase().includes(filterString)
+        client.email.toLowerCase().includes(filterString)
       );
     });
     refreshData(filteredClients);
-    if (filteredClients.lenght === 0) {
+    {
       showGeneralResult();
     }
     // filteredClients.lenght === 0
@@ -93,16 +92,6 @@ function removeCurrencyFromAmount(amount) {
   return Number(amount.slice(1));
 }
 
-// function showNotFoundSection() {
-//   document.querySelector(".resultList").style.display = "none";
-//   document.querySelector(".notFound").style.display = "block";
-// }
-
-// function showResultListSection() {
-//   document.querySelector(".resultList").style.display = "block";
-//   document.querySelector(".notFound").style.display = "none";
-// }
-
 function showGeneralResult() {
   if (filteredClients.lenght === 0) {
     document.querySelector(".resultList").style.display = "none";
@@ -111,4 +100,29 @@ function showGeneralResult() {
     document.querySelector(".resultList").style.display = "block";
     document.querySelector(".notFound").style.display = "none";
   }
+}
+
+const filterGender = [
+  { id: "filterFemale", value: "Female" },
+  { id: "filterMale", value: "Male" },
+];
+
+filterGender.forEach((gender) => {
+  const element = document.querySelector(`#${gender.id}`);
+  element.addEventListener("mouseover", () => {
+    filterListGender(gender.value);
+  });
+});
+
+function filterByGender(sex) {
+  const genderList = clients.filter((client) => {
+    if (sex == "male") {
+      return client.gender.toLowerCase() == "male";
+    } else if (sex == "female") {
+      return client.gender.toLowerCase() == "female";
+    } else {
+      return clients;
+    }
+  });
+  refreshData(genderList);
 }
