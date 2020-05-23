@@ -1,6 +1,6 @@
 let clients = [];
 const database = firebase.database();
-const clientsRef = database.ref("clients");
+const clientsRef = firebase.database().ref("clients");
 clientsRef.on("value", (snapshot) => {
   console.log(snapshot.val());
   clients = snapshot.val();
