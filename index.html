@@ -3,8 +3,8 @@
   <head>
     <title>My Clients Data</title>
     <link rel="stylesheet" type="text/css" href="styles/styles.css" />
-    <script type="text/javascript" src="scripts/data.js"></script>
-    <script type="text/javascript" src="scripts/script.js"></script>
+    <!-- <script type="text/javascript" src="scripts/data.js"></script>
+    <script type="text/javascript" src="scripts/script.js"></script> -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -25,13 +25,15 @@
             aria-label="Search"
             onkeyup="filterList()"
           />
-          <!-- <button
+          <button
+            id="Female"
+            id="Male"
             class="btn btn-outline-success my-2 my-sm-0"
             type="button"
             onclick="filterList()"
           >
             Filter
-          </button> -->
+          </button>
           <div class="btn-group mx-2" role="group" aria-label="First group">
             <button
               type="button"
@@ -52,8 +54,14 @@
         <a> $<span class="totalAmountContainer">00.00</span></a>
       </nav>
     </section>
+    <section class="container">
+      <div>
+        <button class="btn btn-primary btn-block" onclick="addClient()">
+          Add new client
+        </button>
+      </div>
+    </section>
     <section class="container resultList">
-      
       <div class="row">
         <div class="col-12">
           <ul çlass="list-unstyled" id="clientsData"></ul>
@@ -66,15 +74,16 @@
           </div>
         </div>
       </div>
-    </section class="container notFound">
-    <div class="row">
-      <div class="col-12">
-        <h1 class="display-2">Sorry, nothing was found</h1>
+    </section>
+    <section class="container notFound">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="display-2">Sorry, nothing was found</h1>
+        </div>
       </div>
-    </div>
-    <section></section>
+    </section>
   </body>
-  
+
   <script
     src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -92,13 +101,15 @@
   ></script>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-database.js"></script>
 
   <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
- 
-    <script type="text/javascript" src="scripts/firebase.js"></script>
-   
+  <script type="text/javascript" src="scripts/firebase.js"></script>
+  <script type="text/javascript" src="scripts/data.js"></script>
+  <script type="text/javascript" src="scripts/script.js"></script>
+
   <script>
     (function () {
       displayData();
